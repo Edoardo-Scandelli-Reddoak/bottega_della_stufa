@@ -214,7 +214,7 @@
         form.reset();
         setStatus('Richiesta inviata. Ti ricontattiamo al più presto, grazie!', 'ok');
       }).catch(function () {
-        setStatus('Invio non riuscito. Chiamaci al 335 825 0278 o scrivi a ' + DESTINATARIO + '.', 'err');
+        setStatus('Invio non riuscito. Chiamaci al 349 596 2457 (Bryan) o al 335 825 0278 (Lorenzo), oppure scrivi a ' + DESTINATARIO + '.', 'err');
       }).then(function () {
         submit.disabled = false;
       });

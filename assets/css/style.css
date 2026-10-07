@@ -302,20 +302,13 @@ svg.i-wa{fill:currentColor; stroke:none}
 .gallery__item--wide{grid-column:span 2}
 .gallery__item img{width:100%; height:100%; object-fit:cover; transition:transform .75s cubic-bezier(.2,.8,.3,1)}
 .gallery__item:hover img{transform:scale(1.07)}
-.gallery__item figcaption{
-  position:absolute; inset:auto 0 0 0; padding:2.6rem 1.1rem .95rem;
-  background:linear-gradient(0deg, rgba(20,10,8,.88), transparent);
-  color:#fff; font-family:var(--display); font-weight:600; font-size:.95rem;
-  transform:translateY(6px); opacity:.92; transition:transform .3s, opacity .3s;
-}
-.gallery__item:hover figcaption{transform:translateY(0); opacity:1}
 
 /* ==========================================================================
    CONTATTI
    ========================================================================== */
 /* box contatto compatti */
 .cbox{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(12px,1.4vw,16px);
+  display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.4vw,16px);
   margin-bottom:clamp(26px,3.2vw,44px);
 }
 .cbox__item{
@@ -468,7 +461,6 @@ svg.i-wa{fill:currentColor; stroke:none}
   .strip__item:nth-child(even){padding-left:clamp(18px,2.2vw,30px); padding-right:0}
   .strip__item:nth-child(n+3){border-top:1px solid var(--line)}
   .cards{grid-template-columns:1fr; gap:16px}
-  .cbox{grid-template-columns:repeat(2,1fr)}
   .contact{grid-template-columns:1fr}
   .footer__in{grid-template-columns:1fr 1fr}
   .footer__brand{grid-column:1/-1}
