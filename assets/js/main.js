@@ -137,10 +137,11 @@
   });
 
   /* ---------- modulo contatti ----------
-     Lascia FORM_ENDPOINT vuoto per usare il client di posta (nessun backend
-     richiesto). Inserendo un endpoint (es. Formspree, Web3Forms, una funzione
-     serverless) l'invio avviene in background senza aprire l'email. */
-  var FORM_ENDPOINT = '';
+     Invio tramite Web3Forms: le richieste arrivano all'email associata alla
+     access key (la chiave è pubblica per design). Lasciando FORM_ENDPOINT
+     vuoto si torna al client di posta, senza backend. */
+  var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  var WEB3FORMS_KEY = '5645b84a-f15d-4571-9d93-c972edb40a3e';
   var DESTINATARIO = 'labottegadellastufa@gmail.com';
 
   var form = document.getElementById('contactForm');
@@ -204,13 +205,20 @@
         return;
       }
 
+      data.append('access_key', WEB3FORMS_KEY);
+      data.append('subject', 'Richiesta dal sito — ' + tipo + ' — ' + nome);
+      data.append('from_name', 'Sito La Bottega della Stufa');
+
       setStatus('Invio in corso…');
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: data
       }).then(function (res) {
-        if (!res.ok) throw new Error(res.status);
+        return res.json().then(function (json) {
+          if (!res.ok || !json.success) throw new Error(json.message || res.status);
+        });
+      }).then(function () {
         form.reset();
         setStatus('Richiesta inviata. Ti ricontattiamo al più presto, grazie!', 'ok');
       }).catch(function () {

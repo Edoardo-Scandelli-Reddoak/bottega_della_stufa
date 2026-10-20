@@ -381,6 +381,9 @@
             <span>Ho letto l'informativa e acconsento al trattamento dei dati per essere ricontattato. <span aria-hidden="true">*</span></span>
           </label>
 
+          <!-- antispam Web3Forms: i bot la spuntano, le persone non la vedono -->
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+
           <button class="btn btn--primary btn--lg form__submit" type="submit">Invia la richiesta</button>
           <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
         </form>

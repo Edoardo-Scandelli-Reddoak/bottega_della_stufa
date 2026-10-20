@@ -31,19 +31,9 @@ assets/docs/               presentazione aziendale in PDF
 
 ## Modulo contatti
 
-Il modulo funziona subito senza backend: alla conferma apre il client di posta
-con il messaggio già compilato verso `labottegadellastufa@gmail.com`.
+Il modulo invia in background tramite **Web3Forms** (`assets/js/main.js`,
+costanti `FORM_ENDPOINT` e `WEB3FORMS_KEY`). Le richieste arrivano all'email
+con cui è stata generata la access key. Antispam: campo nascosto `botcheck`.
 
-Per farlo inviare in background (senza aprire l'email), basta incollare un
-endpoint in `assets/js/main.js`:
-
-```js
-var FORM_ENDPOINT = 'https://formspree.io/f/xxxxxxx';
-```
-
-Va bene qualunque servizio che accetti una POST `multipart/form-data`
-(Formspree, Web3Forms, una funzione serverless su Vercel).
-
-## Da completare
-
-- Endpoint del modulo contatti, se si vuole l'invio senza client di posta.
+Svuotando `FORM_ENDPOINT` il modulo torna ad aprire il client di posta verso
+`labottegadellastufa@gmail.com`.
